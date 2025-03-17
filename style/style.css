@@ -1,0 +1,552 @@
+:root
+{
+    --pageHeaderWidth: 100%;
+    --pageHeaderHeight: 100px;
+
+    --pageFooterHeight: 50px;
+
+    --searchResultPageLinkListItemMinHeight: 20px;
+
+    --buyProductFormInputWidth: 250px;
+
+    --lightGreyNormal: rgb(227, 227, 227);
+    --lightGreyHover: rgb(240, 240, 240);
+
+    --yellowNormal: rgb(200, 200, 0);
+    --yellowHover: rgb(255, 255, 0);
+    --yellowActive: rgb(255, 255, 127);
+
+    --defaultTransitionTime: 0.25s;
+}
+
+body
+{
+    /* Body covers everything without necessarily giving me scrollbars! */
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+
+    font-family: sans-serif, Arial, "Times New Roman";
+
+    box-sizing: border-box;
+
+    overflow: auto;
+
+    transition: 1s;
+}
+
+.errorDisplay
+{
+    display: block;
+    width: 100%;
+    height: fit-content;
+
+    color: red;
+    text-align: center;
+
+    font-family: "Consolas", sans-serif, Arial, "Times New Roman";
+
+    cursor: text;
+}
+
+.greyInteractable
+{
+    background-color: var(--lightGreyNormal);
+    transition: var(--defaultTransitionTime);
+}
+
+.greyInteractable:hover
+{
+    background-color: var(--lightGreyHover);
+}
+
+button.greyInteractable:active,
+input[type="submit"].greyInteractable:active,
+input[type="text"].greyInteractable:focus
+{
+    background-color: white;
+}
+
+.yellowInteractable
+{
+    background-color: var(--yellowNormal);
+    transition: var(--defaultTransitionTime);
+}
+
+.yellowInteractable:hover
+{
+    background-color: var(--yellowHover);
+}
+
+button.yellowInteractable:active,
+input[type="submit"].yellowInteractable:active,
+.searchResultPageLinkListItem.yellowInteractable:active
+{
+    background-color: var(--yellowActive);
+}
+
+.noDecorationLink
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+header#pageHeader
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+
+    width: var(--pageHeaderWidth);
+    height: var(--pageHeaderHeight);
+    box-sizing: border-box;
+
+    border-bottom: 2px solid black;
+
+    background: linear-gradient(to right, red, white);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.pageHeaderChild
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border-right: 2px solid black;
+}
+
+.pageHeaderChild:nth-last-child(1)
+{
+    border-right: 0px;
+}
+
+#titleArea
+{
+    width: 30%;
+
+    color: rgb(255, 255, 0);
+    font-size: 3.75vw;
+    font-style: italic;
+    font-weight: 700;
+    text-shadow: 2px 2px 2px black;
+}
+
+#searchForm
+{
+    width: 60%;
+}
+
+input#searchInput
+{
+    width: 90%;
+    height: 50%;
+
+    border: 0px solid black;
+    border-radius: 100px;
+
+    outline-width: 0px;
+
+    font-size: 20px;
+}
+
+input#searchInput::placeholder
+{
+    color: rgb(63, 63, 63);
+    font-style: italic;
+}
+
+#loginArea
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 10%;
+}
+
+.loginAreaButton
+{
+    width: 90%;
+    height: 25%;
+
+    border: 0px;
+    border-radius: 50px;
+}
+
+#userNameDisplay
+{
+    font-weight: 700;
+}
+
+.loginAreaButton, #userNameDisplay
+{
+    font-size: 1vw;
+}
+
+.postPageHeader
+{
+    width: 100%;
+    min-height: calc(100% - var(--pageHeaderHeight) - var(--pageFooterHeight));
+    box-sizing: border-box;
+
+    margin-top: var(--pageHeaderHeight);
+
+    background-color: var(--lightGreyNormal);
+}
+
+.productArea
+{
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 25px;
+    transition: var(--defaultTransitionTime);
+    background-color: var(--lightGreyNormal);
+}
+
+.productArea:hover
+{
+    scale: 1.05;
+    border: 2px solid yellow;
+    background-color: white;
+}
+
+.buyProductLink
+{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+#productsFeedArea
+{
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: minmax(375px, auto);
+    grid-template-columns: repeat(auto-fill, minmax(375px, auto));
+    gap: 10px;
+    overflow: hidden;
+
+    padding: 10px;
+}
+
+.productRecomendationArea
+{
+    display: inline-block;
+    overflow: hidden;
+
+    padding: 5px;
+}
+
+.productRecomendationImageArea
+{
+    display: block;
+
+    width: fit-content;
+    height: fit-content;
+    max-width: 50%;
+}
+
+.productRecomendationImage
+{
+    display: inline-block;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    border-radius: 25px;
+}
+
+.productRecomendationName
+{
+    display: inline-block;
+    font-weight: 900;
+}
+
+.searchResultArea
+{
+    display: inline-block;
+    width: 90%;
+    height: fit-content;
+
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10px;
+}
+
+.searchResultArea:first-child
+{
+    margin-top: 10px;
+}
+
+.searchResultHeader
+{
+    max-height: 10%;
+
+    font-size: 2.5vw;
+    font-weight: 900;
+    text-align: left;
+    text-indent: 10px;
+}
+
+.searchResultImageArea
+{
+    float: left;
+
+    max-width: 25%;
+    max-height: 90%;
+
+    margin-left: 10px;
+}
+
+.searchResultImage
+{
+    width: 75%;
+    height: 75%;
+
+    border-radius: 20px;
+}
+
+.searchResultPrice
+{
+    font-weight: 750;
+}
+
+#searchResultPageNavigationArea
+{
+    box-sizing: border-box;
+
+    border-top: 2px solid black;
+
+    text-align: center;
+
+    background-color: white;
+}
+
+#searchResultPageLinkList
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    list-style-type: none;
+}
+
+.searchResultPageLinkListItem
+{
+    min-width: 20px;
+    min-height: var(--searchResultPageLinkListItemMinHeight);
+
+    border: 1px solid rgb(63, 63, 63);
+    border-radius: 5px;
+
+    margin: 2px;
+}
+
+.searchResultPageLink
+{
+    display: inline-block;
+
+    width: 100%;
+    height: 100%;
+    line-height: var(--searchResultPageLinkListItemMinHeight);
+
+    color: black;
+    text-align: center;
+}
+
+#buyProductArea
+{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+}
+
+#buyProductInfoDisplayArea
+{
+    width: 50%;
+    box-sizing: border-box;
+
+    border-right: 1px solid black;
+
+    background-color: white;
+}
+
+#buyProductNameDisplay
+{
+    display: block;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 900;
+}
+
+#buyProductImageArea
+{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+#buyProductImage
+{
+    width: 50%;
+    height: 50%;
+}
+
+#buyProductPriceDisplay
+{
+    display: block;
+
+    text-align: center;
+    font-weight: 700;
+}
+
+#buyProductDescription
+{
+    text-align: center;
+}
+
+#buyProductInputArea
+{
+    width: 50%;
+    box-sizing: border-box;
+
+    border-left: 1px solid black;
+
+    background-color: grey;
+}
+
+#buyProductForm
+{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    text-align: right;
+}
+
+#buyProductForm div
+{
+    margin: 10px;
+}
+
+#buyProductForm header
+{
+    font-weight: 900;
+    text-align: center;
+}
+
+#buyProductForm input
+{
+    width: var(--buyProductFormInputWidth);
+}
+
+#paymentMethodSelect
+{
+    width: calc(var(--buyProductFormInputWidth) + 6px);
+}
+
+#buyProductForm input[type="submit"]
+{
+    width: 100px;
+    height: 25px;
+
+    border: 0px;
+    border-radius: 25px;
+
+    font-weight: 750;
+}
+
+#userInfoForm
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: right;
+}
+
+#userInfoSubmitInput
+{
+    width: 75%;
+    min-width: 100px;
+    max-width: 200px;
+    height: 25px;
+
+    border: 0px;
+    border-radius: 25px;
+}
+
+.userInfoInput, #buyProductForm input[type="text"]
+{
+    outline-width: 0px;
+
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
+.userInfoInput:focus, #buyProductForm input[type="text"]:focus
+{
+    border: 2px solid lightseagreen;
+}
+
+#buyDoneContentArea
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: green;
+    text-align: center;
+}
+
+#buyDoneMessageHeader
+{
+    font-size: 2.5vw;
+    font-weight: 900;
+}
+
+#buyDoneMessageAdditionalText
+{
+    font-style: italic;
+}
+
+footer#pageFooter
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: var(--pageFooterHeight);
+
+    border-top: 2px solid black;
+
+    box-sizing: border-box;
+
+    color: white;
+
+    background-color: rgb(127, 0, 0);
+}
